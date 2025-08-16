@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BasicCodelab</string>
+    <string name="placeholder_search">Search</string>
+</resources>
