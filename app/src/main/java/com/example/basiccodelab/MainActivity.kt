@@ -7,7 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -15,6 +17,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -147,5 +151,29 @@ fun FavoriteCollectionCardPreview() {
         R.drawable.fc2_nature_meditations,
         R.string.fc2_nature_meditations,
         modifier = Modifier.padding(8.dp)
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AlignYourBodyRow() {
+    LazyRow (
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(16.dp)
+    ) {
+        items(AlignBodyRowList()) {
+            item -> AlignYourBodyElement(item.image, item.text)
+        }
+    }
+}
+
+fun AlignBodyRowList() : List<AlignBodyList> {
+    return listOf(
+        AlignBodyList(R.drawable.ab1_inversions, R.string.ab1_inversions),
+        AlignBodyList(R.drawable.ab2_quick_yoga, R.string.ab2_quick_yoga),
+        AlignBodyList(R.drawable.ab3_stretching, R.string.ab3_stretching),
+        AlignBodyList(R.drawable.ab4_tabata, R.string.ab4_tabata),
+        AlignBodyList(R.drawable.ab5_hiit, R.string.ab5_hiit),
+        AlignBodyList(R.drawable.ab6_pre_natal_yoga, R.string.ab6_pre_natal_yoga),
     )
 }
