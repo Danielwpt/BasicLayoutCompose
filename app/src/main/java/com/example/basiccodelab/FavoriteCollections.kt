@@ -1,3 +1,9 @@
 package com.example.basiccodelab
 
-data class FavoriteCollections()
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+
+data class FavoriteCollections(
+    @DrawableRes val image : Int,
+    @StringRes val text : Int
+)
