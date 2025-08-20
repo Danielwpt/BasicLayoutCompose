@@ -12,12 +12,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -161,13 +165,13 @@ fun AlignYourBodyRow() {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(16.dp)
     ) {
-        items(AlignBodyRowList()) {
+        items(alignBodyRowList()) {
             item -> AlignYourBodyElement(item.image, item.text)
         }
     }
 }
 
-fun AlignBodyRowList() : List<AlignBodyList> {
+fun alignBodyRowList() : List<AlignBodyList> {
     return listOf(
         AlignBodyList(R.drawable.ab1_inversions, R.string.ab1_inversions),
         AlignBodyList(R.drawable.ab2_quick_yoga, R.string.ab2_quick_yoga),
@@ -175,5 +179,34 @@ fun AlignBodyRowList() : List<AlignBodyList> {
         AlignBodyList(R.drawable.ab4_tabata, R.string.ab4_tabata),
         AlignBodyList(R.drawable.ab5_hiit, R.string.ab5_hiit),
         AlignBodyList(R.drawable.ab6_pre_natal_yoga, R.string.ab6_pre_natal_yoga),
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FavoriteCollectionsGrid() {
+    LazyHorizontalGrid(
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        rows = GridCells.Fixed(2),
+        modifier = Modifier.height(168.dp)
+    ) {
+        items(favoriteCollectionsList()) {
+            item -> FavoriteCollectionCard(
+            image = item.image, text = item.text, modifier = Modifier.height(80.dp)
+            )
+        }
+    }
+}
+
+fun favoriteCollectionsList() : List<FavoriteCollections> {
+    return listOf(
+        FavoriteCollections(R.drawable.fc1_short_mantras, R.string.fc1_short_mantras),
+        FavoriteCollections(R.drawable.fc2_nature_meditations, R.string.fc2_nature_meditations),
+        FavoriteCollections(R.drawable.fc3_stress_and_anxiety, R.string.fc3_stress_and_anxiety),
+        FavoriteCollections(R.drawable.fc4_self_massage, R.string.fc4_self_massage),
+        FavoriteCollections(R.drawable.fc5_overwhelmed, R.string.fc5_overwhelmed),
+        FavoriteCollections(R.drawable.fc6_nightly_wind_down, R.string.fc6_nightly_wind_down),
     )
 }
