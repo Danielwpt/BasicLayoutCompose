@@ -24,7 +24,9 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -223,7 +225,7 @@ fun HomeSection(
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun HomeSectionPreview() {
     BasicCodelabTheme {
@@ -239,4 +241,31 @@ fun HomeSectionPreview() {
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
+}
+
+@Composable
+fun HomeScreen(
+    modifier : Modifier = Modifier
+) {
+    Column (
+        modifier.verticalScroll(rememberScrollState())
+    ) {
+        Spacer(modifier = Modifier.height(16.dp))
+
+        SearchBar(Modifier.padding(horizontal = 16.dp))
+        HomeSection(R.string.align_your_body) {
+            AlignYourBodyRow()
+        }
+        HomeSection(R.string.favorite_collections) {
+            FavoriteCollectionsGrid()
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+    }
+}
+
+@Preview(showBackground = true, heightDp = 180)
+@Composable
+fun HomeScreenPreview() {
+    HomeScreen()
 }
