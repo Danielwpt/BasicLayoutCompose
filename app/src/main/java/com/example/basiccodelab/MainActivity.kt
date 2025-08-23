@@ -107,7 +107,6 @@ fun AlignYourBodyElement(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun AlignYourBodyElementPreview() {
     AlignYourBodyElement(
@@ -209,4 +208,32 @@ fun favoriteCollectionsList() : List<FavoriteCollections> {
         FavoriteCollections(R.drawable.fc5_overwhelmed, R.string.fc5_overwhelmed),
         FavoriteCollections(R.drawable.fc6_nightly_wind_down, R.string.fc6_nightly_wind_down),
     )
+}
+
+@Composable
+fun HomeSection(
+    @StringRes title : Int,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+) {
+    Column (modifier) {
+        Text(stringResource(title),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
+                .padding(horizontal = 16.dp))
+        content()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun HomeSectionPreview() {
+    BasicCodelabTheme {
+        HomeSection(
+            R.string.align_your_body
+        ) {
+            AlignYourBodyRow()
+        }
+    }
 }
