@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -49,15 +50,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BasicCodelabTheme {
-
+                HomeSectionPreview()
             }
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun SearchBar() {
+fun SearchBar(modifier : Modifier = Modifier) {
     TextField(
         value = "",
         onValueChange = {},
@@ -147,7 +147,6 @@ fun FavoriteCollectionCard(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun FavoriteCollectionCardPreview() {
     FavoriteCollectionCard(
@@ -157,7 +156,6 @@ fun FavoriteCollectionCardPreview() {
     )
 }
 
-@Preview(showBackground = true)
 @Composable
 fun AlignYourBodyRow() {
     LazyRow (
@@ -181,7 +179,6 @@ fun alignBodyRowList() : List<AlignBodyList> {
     )
 }
 
-@Preview(showBackground = true)
 @Composable
 fun FavoriteCollectionsGrid() {
     LazyHorizontalGrid(
@@ -230,10 +227,16 @@ fun HomeSection(
 @Composable
 fun HomeSectionPreview() {
     BasicCodelabTheme {
-        HomeSection(
-            R.string.align_your_body
-        ) {
-            AlignYourBodyRow()
+        Column {
+            Spacer(modifier = Modifier.height(16.dp))
+            SearchBar(Modifier.padding(horizontal = 16.dp))
+            HomeSection(R.string.align_your_body) {
+                AlignYourBodyRow()
+            }
+            HomeSection(R.string.favorite_collections) {
+                FavoriteCollectionsGrid()
+            }
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
