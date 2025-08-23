@@ -15,4 +15,7 @@
     <string name="fc4_self_massage">Self massage</string>
     <string name="fc5_overwhelmed">Overwhelmed</string>
     <string name="fc6_nightly_wind_down">Nightly wind down</string>
+    <string name="cd_fab_start">start</string>
+    <string name="bottom_navigation_home">Home</string>
+    <string name="bottom_navigation_profile">Profile</string>
 </resources>

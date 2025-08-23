@@ -28,9 +28,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -264,8 +268,51 @@ fun HomeScreen(
     }
 }
 
-@Preview(showBackground = true, heightDp = 180)
+//@Preview(showBackground = true, heightDp = 180)
 @Composable
 fun HomeScreenPreview() {
     HomeScreen()
+}
+
+@Composable
+fun BasicLayoutBottomNavigation(modifier : Modifier = Modifier) {
+    NavigationBar (
+        modifier = modifier,
+        containerColor = MaterialTheme.colorScheme.surfaceVariant
+    ) {
+        NavigationBarItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(text = stringResource(R.string.bottom_navigation_home))
+            },
+            selected = true,
+            onClick = {}
+        )
+        NavigationBarItem(
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(
+                    text = stringResource(R.string.bottom_navigation_profile)
+                )
+            },
+            selected = false,
+            onClick = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BasicLayoutBottomNavigationPreview() {
+    BasicLayoutBottomNavigation()
 }
