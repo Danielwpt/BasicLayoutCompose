@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -35,6 +36,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -44,6 +47,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -327,6 +331,70 @@ fun BasicLayoutPortrait() {
             }
         ) {
             padding -> HomeScreen(Modifier.padding(padding))
+        }
+    }
+}
+
+@Composable
+fun BasicLayoutNavigationRail(
+    modifier : Modifier = Modifier
+) {
+    NavigationRail (
+        modifier = modifier.padding(start = 8.dp, end = 8.dp),
+        containerColor = MaterialTheme.colorScheme.background
+    ) {
+        Column (
+            modifier = modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            NavigationRailItem(
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(
+                        text = stringResource(R.string.bottom_navigation_home)
+                    )
+                },
+                selected = true,
+                onClick = {}
+            )
+
+            Spacer(modifier = modifier.padding(8.dp))
+
+            NavigationRailItem(
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(
+                        text = stringResource(R.string.bottom_navigation_profile)
+                    )
+                },
+                selected = false,
+                onClick = {}
+            )
+        }
+    }
+}
+
+@Composable
+fun BasicLayoutLandscape() {
+    MaterialTheme {
+        Surface (
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Row {
+                BasicLayoutNavigationRail()
+                HomeScreen()
+            }
         }
     }
 }
